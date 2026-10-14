@@ -1,0 +1,14 @@
+* Operational amplifier
+
+.subckt MyOpamp in+ in- out
+
+.param pi=3.141592654
+
+Ri in+ in- {Ri}
+E1 a 0 value={Ao*V(in+,in-)}
+R1 a b 1
+C1 b 0 {1/(2*pi*1*(FBW/Ao))}
+E2 c 0 value={v(b)}
+Ro c out {Ro}
+
+.ends MyOpamp

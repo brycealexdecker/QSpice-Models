@@ -1,0 +1,30 @@
+* 3-phase BLDC generator subcircuit
+* W input:     1 V = 1 mechanical rad/s
+* TGEN output: 1 V = 1 N·m generator braking torque
+
+.subckt BLDCGEN A B C W TGEN 
+
+.func trap(x) {limit((3/pi)*asin(sin(x)),-1,1)}
+
+* Generated phase back-EMFs
+BEMFA EA N V={Ke*V(W)*trap(idt(pp*V(W),0))}
+BEMFB EB N V={Ke*V(W)*trap(idt(pp*V(W),0)-2*pi/3)}
+BEMFC EC N V={Ke*V(W)*trap(idt(pp*V(W),0)+2*pi/3)}
+
+* Phase winding resistance and inductance
+RA EA LA {Rs}
+LA LA A  {Ls}
+
+RB EB LB {Rs}
+LB LB B  {Ls}
+
+RC EC LC {Rs}
+LC LC C  {Ls}
+
+* Numerical reference for the internal neutral
+RREF N 0 1G
+
+* Generator torque output: 1 V = 1 N·m
+BTGEN TGEN 0 V={(V(EA,N)*I(RA)+V(EB,N)*I(RB)+V(EC,N)*I(RC))/V(W)}
+
+.ends BLDCGEN

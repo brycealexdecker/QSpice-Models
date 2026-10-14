@@ -1,0 +1,16 @@
+ÿØÿÛ«symbol
+  «type: X»
+  «description: Comparator»
+  «library file: C:\Users\Jabro\Documents\QSPICE\MyLibrary\Comparator.lib.txt»
+  «shorted pins: false»
+  «line (-300,400) (-300,-400) 0 0 0x1000000 -1 -1»
+  «line (-300,-400) (400,0) 0 0 0x1000000 -1 -1»
+  «line (400,0) (-300,400) 0 0 0x1000000 -1 -1»
+  «text (100,300) 1 0 0 0x1000000 -1 -1 "X1"»
+  «text (300,-400) 1 0 0 0x1000000 -1 -1 "COMPARATOR"»
+  «text (450,-550) 1 0 0 0x0 -1 -1 "Vhigh =1 "»
+  «text (450,-700) 1 0 0 0x0 -1 -1 "Vlow =0"»
+  «pin (-300,-200) (20,0) 1 7 0 0x0 -1 "in+"»
+  «pin (-300,200) (0,0) 1 7 0 0x0 -1 "in-"»
+  «pin (400,0) (0,0) 1 15 0 0x0 -1 "out"»
+»

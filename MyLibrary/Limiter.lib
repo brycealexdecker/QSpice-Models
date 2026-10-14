@@ -1,0 +1,11 @@
+* Limiter
+*
+*
+**********************
+
+.subckt Limiter in out
+
+R1 in 0 {10Meg}
+B1 Out 0 V = if(V(in) > upper,upper,if(V(in) < lower, lower,V(in)))
+
+.ends Limiter

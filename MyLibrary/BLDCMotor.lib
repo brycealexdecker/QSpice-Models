@@ -1,0 +1,34 @@
+* BLDC motor electromagnetic subcircuit
+*
+* A B C  = three-phase motor terminals
+* W      = mechanical speed port: 1 V = 1 rad/s
+* TOUT   = electromagnetic torque output: 1 V = 1 N*m
+* params: Ke=0.0418 Rs=0.50 Ls=200u pp=4 theta0=0
+
+
+.subckt BLDCMOTOR A B C W TOUT 
+* Normalized trapezoidal back-EMF waveform, -1 to +1
+.func trap(x) {limit((3/pi)*asin(sin(x)),-1,1)}
+
+* Back-EMF sources
+BEMFA EA N V={Ke*V(W)*trap(idt(pp*V(W),theta0))}
+BEMFB EB N V={Ke*V(W)*trap(idt(pp*V(W),theta0)-2*pi/3)}
+BEMFC EC N V={Ke*V(W)*trap(idt(pp*V(W),theta0)+2*pi/3)}
+
+* Phase windings
+LPA A LA {Ls}
+RPA LA EA {Rs}
+
+LPB B LB {Ls}
+RPB LB EB {Rs}
+
+LPC C LC {Ls}
+RPC LC EC {Rs}
+
+* Numerical reference for the floating wye neutral
+RREF N 0 1G
+
+* Electromagnetic motor torque output
+BTORQ TOUT 0 V={Ke*(trap(idt(pp*V(W),theta0))*I(RPA)+trap(idt(pp*V(W),theta0)-2*pi/3)*I(RPB)+trap(idt(pp*V(W),theta0)+2*pi/3)*I(RPC))}
+
+.ends BLDCMOTOR

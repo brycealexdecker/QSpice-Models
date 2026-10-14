@@ -1,0 +1,18 @@
+ÿØÿÛ«symbol MyOpamp
+  «type: X»
+  «description: MyOpamp»
+  «library file: C:\Users\Jabro\Documents\QSPICE\MyLibrary\MyOpamp.txt»
+  «shorted pins: false»
+  «line (-300,300) (-300,-300) 0 0 0x1000000 -1 -1»
+  «line (-300,-300) (300,0) 0 0 0x1000000 -1 -1»
+  «line (300,0) (-300,300) 0 0 0x1000000 -1 -1»
+  «text (0,300) 1 0 0 0x1000000 -1 -1 "X1"»
+  «text (150,-300) 1 15 0 0x1000000 -1 -1 "MyOpamp"»
+  «text (0,-450) 0.681 0 0 0x0 -1 -1 "Ao =1e5"»
+  «text (100,-550) 0.681 0 0 0x0 -1 -1 "FBW = 10e6"»
+  «text (50,-650) 0.681 0 0 0x0 -1 -1 "Ri = 100e6"»
+  «text (152,-750) 0.681 11 0 0x0 -1 -1 "Ro = 1"»
+  «pin (-300,-100) (20,0) 0.735 7 0 0x0 -1 "in+"»
+  «pin (-300,100) (20,0) 0.735 7 0 0x0 -1 "in-"»
+  «pin (300,0) (0,0) 1 15 0 0x0 -1 "out"»
+»
